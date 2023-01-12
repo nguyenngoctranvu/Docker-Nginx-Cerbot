@@ -74,3 +74,9 @@ server {
 ```
 docker-compose run --rm certbot renew
 ```
+
+## Add cronjob renew cert every month
+
+```
+0 0 1 * * cd /home/ec2-user/Docker-Nginx-Cerbot &&  docker-compose run --rm certbot renew
+```
