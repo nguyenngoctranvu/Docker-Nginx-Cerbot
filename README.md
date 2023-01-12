@@ -6,6 +6,8 @@ yum install docker
 sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
+systemctl start docker
+systemctl enable docker
 ```
 
 ## Set PATH
@@ -43,12 +45,12 @@ server {
 ## Dry run
 ```
 docker-compose up -d
-docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d example.org
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ --dry-run -d example.org
 ```
 Re-run Certbot without the --dry-run flag to fill the folder with certificates:
 
 ```
-docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
+docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
 ```
 
 ## Open port 443 for domain
